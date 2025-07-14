@@ -1,6 +1,6 @@
 export const ctaDetails = {
-    heading: 'Join Over 1 Million Users To Transform Your Finances',
-    subheading: 'Your journey to financial freedom starts here. Download Finwise today and take the first step towards a brighter financial future!',
+    heading: 'Unlock your potential. Start the transformation',
+    subheading: 'Your journey to take control starts here. Download SynthetiIQ today and take the first step towards a brighter future!',
     appStoreUrl: '#',
     googlePlayUrl: '#'
 }

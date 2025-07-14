@@ -4,8 +4,8 @@ import { IBenefit } from "@/types"
 
 export const benefits: IBenefit[] = [
     {
-        title: "Your AI Creative Co-Pilot",
-        description: "Write, brainstorm, edit, and explore ideas together—unlocking your best work.",
+        title: "Your AI Time",
+        description: "We make time for you",
         bullets: [
             {
                 title: "InsightSync AI",
@@ -18,8 +18,8 @@ export const benefits: IBenefit[] = [
                 icon: <FiTarget size={26} />
             },
             {
-                title: "CodeCraft GPT",
-                description: "Generate and debug code, automate repetitive tasks in one intelligent workspace.",
+                title: "TimeCraft GPT",
+                description: "Generate insights to automate time management in one intelligent workspace.",
                 icon: <FiTrendingUp size={26} />
             }
         ],

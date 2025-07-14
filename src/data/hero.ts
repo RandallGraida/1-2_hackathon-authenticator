@@ -1,5 +1,5 @@
 export const heroDetails = {
-    heading: 'Ask anything. Explore possibilities. Own your productivity.',
-    subheading: 'Turn pages into power condense text into crystal‑clear, real‑world solutions.',
+    heading: 'Explore possibilities. Own your productivity.',
+    subheading: 'Make your time work for you.',
     centerImageSrc: '/images/hero-mockup.webp',
 }
