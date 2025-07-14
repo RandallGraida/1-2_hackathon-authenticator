@@ -5,6 +5,9 @@ export const testimonials: ITestimonial[] = [
     {
         name: 'John Smith',
         role: 'CEO at Company',
+        /*
+        * siteDetails.siteName = 'Finwise'
+        */
         message: `${siteDetails.siteName}'s AI-driven insights have transformed how we approach financial planning for our clients. It's an invaluable resource in the modern financial landscape.`,
         avatar: '/images/testimonial-1.webp',
     },

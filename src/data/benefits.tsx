@@ -4,66 +4,66 @@ import { IBenefit } from "@/types"
 
 export const benefits: IBenefit[] = [
     {
-        title: "Smart Budgeting",
-        description: "Take the guesswork out of managing your money. Our AI-powered budgeting tool adapts to your lifestyle and helps you stay on track.",
+        title: "Your AI Creative Co-Pilot",
+        description: "Write, brainstorm, edit, and explore ideas together—unlocking your best work.",
         bullets: [
             {
-                title: "Intelligent Categorization",
-                description: "Automatically sorts your transactions for crystal-clear insights.",
+                title: "InsightSync AI",
+                description: "Automatically recap meetings, surface fresh insights, and turbocharge your productivity.",
                 icon: <FiBarChart2 size={26} />
             },
             {
                 title: "Customizable Goals",
-                description: "Set and track financial objectives that matter to you.",
+                description: "Describe your goal and experience productivity built just for you.",
                 icon: <FiTarget size={26} />
             },
             {
-                title: "Predictive Analysis",
-                description: "Get ahead of your finances with spending forecasts and alerts.",
+                title: "CodeCraft GPT",
+                description: "Generate and debug code, automate repetitive tasks in one intelligent workspace.",
                 icon: <FiTrendingUp size={26} />
             }
         ],
         imageSrc: "/images/mockup-1.webp"
     },
     {
-        title: "Seamless Investing",
-        description: "Start building wealth today, no financial degree required. Finwise makes investing accessible and straightforward.",
+        title: "Your AI-Powered Productivity Engine",
+        description: "Eliminates bottlenecks with AI, you work smarter, not harder.",
         bullets: [
             {
-                title: "Micro-Investing",
-                description: "Begin with as little as $1 and watch your money grow.",
+                title: "Closing the Gaps",
+                description: "Focus on outcomes.",
                 icon: <FiDollarSign size={26} />
             },
             {
-                title: "Expert Portfolios",
-                description: "Choose from investment strategies tailored to your risk tolerance.",
+                title: "Craft Your Perfect Workflow",
+                description: "Understands your needs and builds smart tools to simplify your workflow. Effortless productivity, by design.",
                 icon: <FiBriefcase size={26} />
             },
             {
-                title: "Real-Time Performance",
-                description: "Track your investments with easy-to-understand metrics and visuals.",
+                title: "Lightning-Fast Intelligence",
+                description: "React to changes, make decisions, and execute tasks without delay.",
                 icon: <FiPieChart size={26} />
             }
         ],
         imageSrc: "/images/mockup-2.webp"
     },
     {
-        title: "Bank-Grade Security",
-        description: "Your financial data deserves the best protection. Rest easy knowing Finwise employs cutting-edge security measures.",
+        title: "Your AI Life OS",
+        description: "Enterprise-grade data privacy and end-to-end encryption at the core",
         bullets: [
             {
                 title: "Military-Grade Encryption",
-                description: "Your information is safeguarded with the highest level of encryption.",
+                description: "One place to think, plan, create, and solve.",
                 icon: <FiLock size={26} />
             },
             {
-                title: "Biometric Authentication",
-                description: "Access your account securely with fingerprint or facial recognition.",
+                title: "Personal Access Lock",
+                description: "Only you can know.",
                 icon: <FiUser size={26} />
             },
             {
-                title: "Real-Time Fraud Detection",
-                description: "Our system constantly monitors for suspicious activity to keep your money safe.",
+                title: "Real-Time Data Protection",
+                description: "Constantly monitors for suspicious activity to keep your data safe.",
                 icon: <FiShield size={26} />
             }
         ],
