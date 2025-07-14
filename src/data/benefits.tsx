@@ -45,7 +45,7 @@ export const benefits: IBenefit[] = [
                 icon: <FiPieChart size={26} />
             }
         ],
-        imageSrc: "/images/mockup-2.webp"
+        imageSrc: "/images/productivity.webp"
     },
     {
         title: "Your AI Life OS",
@@ -67,6 +67,6 @@ export const benefits: IBenefit[] = [
                 icon: <FiShield size={26} />
             }
         ],
-        imageSrc: "/images/mockup-1.webp"
+        imageSrc: "/images/app_security.webp"
     },
 ]
