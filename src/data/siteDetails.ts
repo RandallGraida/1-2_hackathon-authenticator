@@ -1,9 +1,9 @@
 export const siteDetails = {
-    siteName: 'SynthetIQ',
+    siteName: 'Echopoint',
     siteUrl: 'https://finwise-omega.vercel.app/',
     metadata: {
-        title: 'SynthetIQ - Next.js and Tailwind CSS Landing Page Template',
-        description: 'SynthetIQ empowers everyone with cutting-edge technology solutions to drive success and efficiency.',
+        title: 'EchoPoint - Next.js and Tailwind CSS Landing Page Template',
+        description: 'EchoPoint empowers everyone with cutting-edge technology solutions to drive success and efficiency.',
     },
     language: 'en-us',
     locale: 'en-US',

@@ -1,132 +1,478 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Reset */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-/* Base */
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #ffffff;
-  color: #333333;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 5rem;
-  overflow-x: hidden;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-/* Navbar */
+html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: url('assets/background/bgimg.png') center/cover no-repeat fixed;
+    min-height: 100vh;
+    color: #fff;
+}
+
+/* === FIXED NAVBAR === */
 .navbar {
-  width: 100%; max-width: 1200px;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
-  z-index: 100;
-  animation: slideDown 0.5s ease-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
-.navbar .logo { width: 48px; height: 48px; transition: transform 0.3s; }
-.navbar .logo:hover { transform: rotate(20deg); }
-.navbar .nav-links a { color: #ff6b00; margin-left: 1.5rem; font-weight: 500; text-decoration: none; position: relative; transition: color 0.3s; }
-.navbar .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: #ff6b00; transition: width 0.3s; }
-.navbar .nav-links a:hover { color: #e65d00; }
-.navbar .nav-links a:hover::after { width: 100%; animation: underline 0.4s ease; }
 
-/* Alarm Section */
+/* Logo Section */
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.app-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+}
+
+@media (max-width: 500px) {
+    .app-title {
+        font-size: 1rem;
+    }
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+/* Desktop Nav Links */
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    color: #fff;
+    margin-left: 1.5rem;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #00bcd4;
+}
+
+/* Mobile Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 250px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 5rem 1rem 2rem;
+    transition: right 0.3s ease-in-out;
+    z-index: 1050;
+}
+
+.sidebar.show {
+    right: 0;
+}
+
+.sidebar a {
+    color: white;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    text-decoration: none;
+    text-align: right;
+}
+
+.sidebar a:hover {
+    color: #00bcd4;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Dark overlay */
+#sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1040;
+}
+
+#sidebar-overlay.show {
+    display: block;
+}
+
+/* === MAIN LAYOUT === */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 7rem 2rem 2rem;
+    text-align: center;
+}
+
+/* Styled Inputs */
+input[type="text"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 1rem;
+}
+
+input[type="text"]::placeholder {
+    color: #ccc;
+}
+
+input[type="text"]:hover {
+    border-color: #00bcd4;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Flatpickr Custom Theme */
+.flatpickr-calendar {
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid #00bcd4;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+.flatpickr-day.today,
+.flatpickr-day.selected {
+    background: #00bcd4;
+    color: black;
+}
+
+.flatpickr-time input,
+.flatpickr-time .numInputWrapper {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
 .alarm-section {
-  width: 90%; max-width: 400px;
-  background: #ffffff;
-  border: 2px solid #ff6b00;
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  display: flex; flex-direction: column; gap: 1rem;
-  margin-top: 2rem;
-  animation: fadeIn 0.6s ease-out;
-}
-.alarm-section h2 {
-  font-size: 1.75rem; font-weight: 600; text-align: center;
-  position: relative;
-}
-.alarm-section h2::after {
-  content: '⏰'; position: absolute; right: -2rem; top: 50%; transform: translateY(-50%);
-  font-size: 1.5rem; animation: bounce 1.5s infinite;
-}
-.alarm-section:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0,0,0,0.15); transition: transform 0.3s, box-shadow 0.3s; }
-
-/* Inputs */
-.input-group { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-input[type="date"], input[type="time"], #location-input {
-  width: 100%; padding: 0.75rem 1rem;
-  border: 2px solid #cccccc; border-radius: 0.75rem;
-  background: #fafafa; color: #333333;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-input:focus { border-color: #ff6b00; box-shadow: 0 0 8px rgba(255,107,0,0.4); outline: none; }
-
-/* Suggestions */
-#suggestions { background: #ffffff; list-style: none; border: 1px solid #cccccc; border-radius: 0.75rem; max-height: 150px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1); animation: fadeIn 0.4s ease; }
-#suggestions li { padding: 0.75rem 1rem; cursor: pointer; transition: background 0.3s, color 0.3s; }
-#suggestions li:hover { background: #ff6b00; color: #fff; animation: pulse 0.6s; }
-
-/* Save Button */
-#save-btn { align-self: center; margin: 2rem 0; padding: 0.75rem 2rem; background: #ff6b00; color: #ffffff; border: none; border-radius: 0.75rem; font-size: 1rem; font-weight: 600; cursor: pointer; transition: transform 0.2s, box-shadow 0.3s; animation: popIn 0.6s ease; }
-#save-btn:hover { transform: scale(1.05); box-shadow: 0 8px 24px rgba(255,107,0,0.4); }
-
-/* Saved Alarm */
-.saved-alarm { width: 90%; max-width: 400px; margin: 1rem 0 2rem; padding: 1.5rem; background: #ffffff; border: 2px solid #ff6b00; border-radius: 1rem; box-shadow: 0 8px 24px rgba(0,0,0,0.1); text-align: center; animation: fadeIn 0.6s ease-out; }
-
-.popup-wrapper {
-  padding: 1rem;
-  background: #fefefe;
-  border-radius: 0.75rem;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-  max-width: 520px;
-  width: 95%;
+    flex: 1 1 350px;
+    max-width: 450px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    border-radius: 1rem;
 }
 
-/* Popups */
-#help, #about, #terms, .helppopup {
-  position: fixed; inset: 0;
-  display: none; align-items: center; justify-content: center;
-  background: rgba(255,255,255,0.95);
-  z-index: 1000;
-}
-#help.active, #about.active, #terms.active, .helppopup.active {
-  display: flex; animation: fadeIn 0.3s ease-out;
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
 }
 
-.popup-content {
-  position: relative;
-  animation: slideUp 0.4s ease-out forwards;
+.input-group label {
+    font-size: 0.9rem;
+    color: #fff;
 }
-.popup-wrapper .popup-content {
-  padding: 2rem;
-  border: 2px solid #ff6b00;
-  border-radius: 1rem;
-  background: #ffffff;
-  color: #333333;
-}
-.popup-content h2 {
-  font-size: 1.5rem; color: #ff6b00; margin-bottom: 1rem;
-}
-.popup-content p { line-height: 1.6; margin-bottom: 1.5rem; }
-.popup-content button {
-  display: block; margin: 0 auto;
-  padding: 0.75rem 1.5rem; background: #ff6b00;
-  color: #ffffff; border: none; border-radius: 0.5rem;
-  cursor: pointer; transition: background 0.3s;
-}
-.popup-content button:hover { background: #e65d00; animation: shake 0.6s; }
 
-@keyframes slideDown { from { opacity:0; transform: translateY(-30px);} to { opacity:1; transform: translateY(0);} }
-@keyframes fadeIn { from { opacity:0;} to { opacity:1;} }
-@keyframes bounce { 0%,20%,50%,80%,100% {transform: translateY(0);} 40% {transform: translateY(-8px);} 60% {transform: translateY(-4px);} }
-@keyframes pulse { 0% { transform: scale(1);} 50% { transform: scale(1.05);} 100% { transform: scale(1);} }
-@keyframes popIn { from { opacity:0; transform: scale(0.8);} to { opacity:1; transform: scale(1);} }
-@keyframes slideUp { from { opacity:0; transform: translateY(20px);} to { opacity:1; transform: translateY(0);} }
-@keyframes underline { from { width:0;} to { width:100%;} }
-@keyframes shake { 0%,100% { transform: translateX(0);} 25%,75% { transform: translateX(-5px);} 50% { transform: translateX(5px);} }
+input[type="date"] {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 1rem;
+}
+
+input[type="date"]::placeholder {
+    color: #ccc;
+}
+
+input[type="date"]:hover {
+    border-color: #00bcd4;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.input-group input[type="time"],
+.input-group input[type="number"] {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+input:hover {
+    border-color: #00bcd4;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+button#save-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+    background: #00bcd4;
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button#save-btn:hover {
+    background: rgba(0, 188, 212, 0.8);
+}
+
+.home-display {
+    font-size: 0.9rem;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#home-display-text {
+    font-weight: 500;
+    color: #00bcd4;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+#saved-alarm {
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
+/* === DESTINATION SEARCH SECTION === */
+#destination-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+#destination-input::placeholder {
+    color: #ccc;
+}
+
+#destination-input:hover {
+    border-color: #00bcd4;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.suggestions-box {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #00bcd4;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+
+.suggestions-box div {
+    padding: 0.75rem 1rem;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.suggestions-box div:hover {
+    background: rgba(0, 188, 212, 0.2);
+}
+
+/* === POPUPS === */
+.helppopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.95);
+    border-radius: 1rem;
+    display: none;
+    z-index: 1000;
+}
+
+.helppopup h2 {
+    color: #00bcd4;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.helppopup p {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.helppopup button {
+    display: block;
+    margin: 2rem auto 0 auto;
+    padding: 0.75rem 2rem;
+    background-color: #00bcd4;
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.helppopup button:hover {
+    background-color: rgba(0, 188, 212, 0.8);
+}
+
+.alarm-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid #00bcd4;
+    padding: 2rem;
+    text-align: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+    max-width: 90%;
+    width: 400px;
+    z-index: 9999;
+    display: none;
+}
+
+.alarm-popup.show {
+    display: block;
+}
+
+.alarm-popup button {
+    margin-top: 1.5rem;
+    padding: 0.75rem 2rem;
+    background-color: #00bcd4;
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.alarm-popup button:hover {
+    background-color: rgba(0, 188, 212, 0.8);
+}
+
+/* === HEADINGS === */
+h2, h3 {
+    margin-bottom: 1rem;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .map-section,
+    .alarm-section {
+        max-width: 100%;
+    }
+
+    #map {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .container {
+        padding-top: 6rem;
+    }
+}
+
+/* === POPUP ANIMATIONS === */
+@keyframes floatUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.helppopup,
+.alarm-popup {
+    animation: floatUp 0.3s ease-out forwards;
+    opacity: 0; /* Ensures it fades in */
+}
