@@ -1,4 +1,4 @@
-# Echopoint- Next.js + Tailwind Landing Page 
+# Echopoint
 
 ### Steps
 
